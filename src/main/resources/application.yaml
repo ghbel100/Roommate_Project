@@ -1,0 +1,29 @@
+logging:
+    level:
+        root: error
+        org.springframework.jdbc.core: error
+
+spring:
+    datasource:
+        password: iamuser
+        username: user
+        url: jdbc:postgresql://localhost:5432/RoomMate
+
+    security:
+        oauth2:
+            client:
+                registration:
+                    github:
+                        client-id: ${CLIENT_ID}
+                        client-secret: ${CLIENT_SECRET}
+                        scope: read:public_repo
+    flyway:
+        locations: classpath:db/migration
+        baseline-on-migrate: true
+
+roommate:
+    rollen:
+        admin: bendisposto, ghbel100
+
+
+

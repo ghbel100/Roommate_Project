@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Arbeitsplatz</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body class="container">
+<h1 class="mt-4">Platz wählen</h1>
+
+<!-- Display error if exists -->
+<div th:if="${error}" class="alert alert-danger" role="alert">
+    <p th:text="${error}"></p>
+</div>
+
+<!-- Include the roomId in the form -->
+<form id="selectPlatz" th:action="@{'/chooseplatz'}" method="post" class="mt-4">
+    <input type="hidden" name="roomId" th:value="${roomId}" />
+
+    <div class="form-group">
+        <label for="selectedPlace">Wähle einen Platz:</label>
+        <select class="form-control" id="selectedPlace" name="arbeitsplatzId" th:value="${arbeitsplatzId}" required>
+            <option th:each="platz : ${arbeitsplatzs}" th:value="${platz.arbeitsplatzId}" th:text="${platz.name}" th:selected="${platz.arbeitsplatzId == arbeitsplatzId}">Platz name</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="datum">Datum:</label>
+        <input type="date" class="form-control" id="datum" name="tag" th:value="${datum}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="startzeit">Startzeit:</label>
+        <input type="time" class="form-control" id="startzeit" name="startTime" th:value="${startzeit}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="endzeit">Endzeit:</label>
+        <input type="time" class="form-control" id="endzeit" name="endTime" th:value="${endzeit}" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Buchen</button>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!-- ausstattunguebersicht.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Ausstattung</title>
+</head>
+<body>
+<input type="hidden" id="arbeitsplatzId" name="arbeitsplatzId" th:value="${arbeitsplatzId}">
+<h1>Add Ausstattung</h1>
+<form th:action="@{'/addaustattung/' + ${arbeitsplatzId}}" th:method="post">
+    <div>
+        <label for="austattungName">Ausstattung Name:</label>
+        <input type="text" id="austattungName" name="austattungName" required>
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+    <div th:if="${ausstatungs.size() > 0}">
+        <h1>Ausstattungs:</h1>
+            <div th:each="ausstatung : ${ausstatungs}">
+                 <p th:text="${ausstatung.getName()}"></p>
+            </div>
+    </div>
+
+</form>
+<a href="/roomoverview">Back to Room Overview</a>
+</body>
+</html>

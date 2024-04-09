@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Seite</title>
+</head>
+<body>
+
+<form th:action="@{'addroom'}" th:method="post">
+    Room name : <input type="text" name="roomName" />
+    <button type="submit"> Add Room</button>
+</form>
+
+</body>
+</html>

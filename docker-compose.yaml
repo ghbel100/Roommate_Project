@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  database:
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      - "POSTGRES_DB=RoomMate"
+      - "POSTGRES_USER=user"
+      - "POSTGRES_PASSWORD=iamuser"

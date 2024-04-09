@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Equipment Reservation</title>
+
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: left;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input[type="checkbox"], input[type="date"], input[type="time"] {
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-4">Reservation by Filter</h1>
+
+    <form th:action="@{'/search'}" th:method="post" class="mt-4">
+        <div class="form-group">
+            <label>Equipment:</label>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="hdmi" name="equipment" value="hdmi">
+                <label class="form-check-label" for="hdmi">HDMI</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="usbc" name="equipment" value="usbc">
+                <label class="form-check-label" for="usbc">USB-C</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label th:for="date">Date:</label>
+            <input th:type="date" th:id="date" th:name="date" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="time-from">Time from:</label>
+            <input type="time" id="time-from" name="time-from" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="time-to">Time to:</label>
+            <input type="time" id="time-to" name="time-to" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-success">Search</button>
+    </form>
+</div>
+
+<!-- Add Bootstrap JS and Popper.js scripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

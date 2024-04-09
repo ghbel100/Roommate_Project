@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Results</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .arbeitsplatz-container {
+            margin-top: 20px;
+        }
+
+        .arbeitsplatz-card {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .reserve-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .reserve-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2 class="mt-4">Available Arbeitsplatz</h2>
+
+    <div class="arbeitsplatz-container" th:each="arbeitsplatz : ${availableArbeitsplatz}">
+        <div class="arbeitsplatz-card">
+            <p class="text-primary" th:text="${arbeitsplatz.name}">Arbeitsplatz Name</p>
+            <form th:action="@{'/chooseplatz/'+ ${arbeitsplatz.roomId}}" th:method="get">
+                <input type="hidden" th:value="${arbeitsplatz.arbeitsplatzId}" name="arbeitsplatzId" />
+                <input type="hidden" th:value="${datum}" name="datum" />
+                <input type="hidden" th:value="${startzeit}" name="startzeit" />
+                <input type="hidden" th:value="${endzeit}" name="endzeit" />
+                <button type="submit" class="btn btn-success reserve-btn">Reservieren</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Add Bootstrap JS and Popper.js scripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

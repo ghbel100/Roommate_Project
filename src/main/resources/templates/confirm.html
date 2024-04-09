@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa; /* Light gray background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .confirmation-container {
+            text-align: center;
+            padding: 30px;
+            background-color: #ffffff; /* White background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+            max-width: 600px;
+        }
+
+        .confirmation-message {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #007bff; /* Bootstrap primary blue */
+            color: #ffffff; /* White text */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+<div class="confirmation-container">
+    <div class="confirmation-message">
+        <h1>Booking Confirmed!</h1>
+        <p>Your reservation has been successfully booked.</p>
+    </div>
+    <div class="button-container">
+        <a href="/chooseroom" class="button">Back to Room Selection</a>
+    </div>
+</div>
+</body>
+</html>
